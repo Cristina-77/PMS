@@ -27,9 +27,6 @@ yarn-debug.log*
 yarn-error.log*
 .env
 
-# Expo (dacă folosești)
-.expo/
-.expo-shared/
 
 # React Native
 ios/Pods/
@@ -60,4 +57,3 @@ Thumbs.db
 *.log
 *.tmp
 tmp/
-
