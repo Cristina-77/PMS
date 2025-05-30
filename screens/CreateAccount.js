@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions,ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
 import authStyles from '../styles/Create.styles';
 
 const CreateAccount = ({ navigation }) => {
@@ -25,12 +25,17 @@ const CreateAccount = ({ navigation }) => {
     >
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={authStyles.container}
+        style={authStyles.flex}
       >
-        <View style={authStyles.container}>
+         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <ScrollView
+      contentContainerStyle={authStyles.container}
+      keyboardShouldPersistTaps="handled"
+    >
+        <View style={authStyles.formContainer}>
           <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Creează Un Cont</Text>
           
-          <View style={authStyles.formContainer}>
+          
             <TextInput
               style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
               placeholder="Nume"
@@ -79,12 +84,15 @@ const CreateAccount = ({ navigation }) => {
               secureTextEntry
               required
             />
+
             
             <TouchableOpacity style={isPortrait ? authStyles.portraitButton : authStyles.landscapeButton} onPress={handleRegister}>
               <Text style={authStyles.buttonText}>Creare cont</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        
+      </ScrollView>
+      </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </ImageBackground>
   );

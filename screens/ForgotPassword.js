@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, useWindowDimensions } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions,ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
 import authStyles from '../styles/Forgot.styles';
 const ForgotPassword = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -17,7 +17,18 @@ const ForgotPassword = ({ navigation }) => {
       source={require('../icons/login.jpg')} 
       style={authStyles.background}
     >
-      <View style={isPortrait ? authStyles.portraitContainer : authStyles.landscapeContainer}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={authStyles.flex}
+        >
+       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <ScrollView
+      contentContainerStyle={authStyles.container}
+      keyboardShouldPersistTaps="handled"
+    >
+        <View style={authStyles.formContainer}>
+          
+     
         <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Resetare Parolă</Text>
         <TextInput
           style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
@@ -31,6 +42,9 @@ const ForgotPassword = ({ navigation }) => {
           <Text style={authStyles.buttonText}>Trimite link de resetare</Text>
         </TouchableOpacity>
       </View>
+      </ScrollView>
+            </TouchableWithoutFeedback>
+            </KeyboardAvoidingView>
     </ImageBackground>
   );
 };

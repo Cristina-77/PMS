@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions } from 'react-native';
+import {View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions,ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
 import authStyles from '../styles/Login.styles';
 
 const auth = ({ navigation }) => {
@@ -23,10 +23,15 @@ const auth = ({ navigation }) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={authStyles.container}
       >
-        <View style={authStyles.container}>
-          <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Bine ai (RE)Venit!</Text>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <ScrollView
+      contentContainerStyle={authStyles.container}
+      keyboardShouldPersistTaps="handled"
+    >
+        <View style={authStyles.formContainer}>
+          <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Creează Un Cont</Text>
           
-          <View style={authStyles.formContainer}>
+          
             <TextInput
               style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
               placeholder="E-mail"
@@ -62,7 +67,8 @@ const auth = ({ navigation }) => {
               <Text style={authStyles.buttonText}>Intră în cont</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </ScrollView>
+             </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </ImageBackground>
   );
