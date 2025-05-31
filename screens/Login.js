@@ -41,7 +41,7 @@ const auth = ({ navigation }) => {
         keyboardShouldPersistTaps="handled"
       >
         <View style={authStyles.formContainer}>
-          <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Creează Un Cont</Text>
+          <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Bine ați (Re)Venit!</Text>
           
             <TextInput
               style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
