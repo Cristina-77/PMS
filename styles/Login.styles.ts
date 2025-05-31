@@ -4,30 +4,22 @@ import { StyleSheet } from 'react-native';
 const authStyles = StyleSheet.create({
   background: {
     flex: 1,
-    width: '100%',
-    height: '100%',
+    resizeMode: 'cover',
   },
-  container: {
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
+  flex: {
+    flex: 1,
+  },
+   container: {
+    flexGrow: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    width: '50%',
-    height: '70%',
-    marginLeft: 'auto',
-    marginRight: '25%',
-    marginTop: '15%',
-    padding: '2%',
+    padding: 20,
   },
   formContainer: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: [{ translateX: -125 }, { translateY: -150 }],
-    width: '100%',
-    alignItems: 'center',
-    
+   width: '100%',
+    maxWidth: 400,
+    padding: 20,
+    borderRadius: 10,
   },
   landscapeInput: {
     width: '120%',

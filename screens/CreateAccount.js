@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions } from 'react-native';
 import authStyles from '../styles/Create.styles';
+import { adaugareUser, verificareExistaUser } from '../src/services/firebase';
+import {Alert} from 'react-native';
+
 
 const CreateAccount = ({ navigation }) => {
   const [lastName, setLastName] = useState('');
@@ -9,9 +12,21 @@ const CreateAccount = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleRegister = () => {
-    // Handle registration logic here
-    console.log('Registration attempted with:', { lastName, firstName, email, password });
+  const handleRegister = async () => {
+    if (!lastName || !firstName || !email || !password) {
+      Alert.alert("Toate câmpurile sunt obligatorii!");
+      return;
+    }
+    if (password !== confirmPassword) {
+      Alert.alert("Parolele nu se potrivesc!");
+      return;
+    }
+    if (await verificareExistaUser(email)){
+        Alert.alert("Exista deja un cont cu acest e-mail")
+        return;
+    }
+    adaugareUser(2, firstName, lastName, email, password) ;
+    Alert.alert("Cont creat cu succes!");
   };
 
   const { width, height } = useWindowDimensions();
@@ -27,10 +42,13 @@ const CreateAccount = ({ navigation }) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={authStyles.container}
       >
-        <View style={authStyles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <ScrollView
+        contentContainerStyle={authStyles.container}
+        keyboardShouldPersistTaps="handled"
+      >
+        <View style={authStyles.formContainer}>
           <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Creează Un Cont</Text>
-          
-          <View style={authStyles.formContainer}>
             <TextInput
               style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
               placeholder="Nume"
@@ -66,7 +84,7 @@ const CreateAccount = ({ navigation }) => {
               placeholderTextColor={'#888'}
               value={password}
               onChangeText={setPassword}
-              secureTextEntry
+              secureTextEntry={true}
               required
             />
             
@@ -79,12 +97,12 @@ const CreateAccount = ({ navigation }) => {
               secureTextEntry
               required
             />
-            
             <TouchableOpacity style={isPortrait ? authStyles.portraitButton : authStyles.landscapeButton} onPress={handleRegister}>
               <Text style={authStyles.buttonText}>Creare cont</Text>
             </TouchableOpacity>
-          </View>
         </View>
+      </ScrollView>
+      </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </ImageBackground>
   );

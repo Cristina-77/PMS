@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions } from 'react-native';
 import authStyles from '../styles/Login.styles';
+import { Alert } from 'react-native';
+import { verificareLogare } from '../src/services/firebase';
 
 const auth = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    console.log('Login attempted with:', email, password);
+  const handleLogin = async () => {
+    if (!email || !password){
+      Alert.alert("Toate campurile trebuie completate")
+      return;
+    }
+    if (await verificareLogare(email, password) === null){
+      Alert.alert("E-mail sau parolă incorectă");
+      return ;
+    }
+    else{
+      Alert.alert("Logare reușită!");    }
+
   };
 
   const { width, height } = useWindowDimensions();
@@ -21,12 +33,16 @@ const auth = ({ navigation }) => {
     >
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={authStyles.container}
+        style={authStyles.flex}
       >
-        <View style={authStyles.container}>
-          <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Bine ai (RE)Venit!</Text>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <ScrollView
+        contentContainerStyle={authStyles.container}
+        keyboardShouldPersistTaps="handled"
+      >
+        <View style={authStyles.formContainer}>
+          <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Creează Un Cont</Text>
           
-          <View style={authStyles.formContainer}>
             <TextInput
               style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
               placeholder="E-mail"
@@ -62,7 +78,8 @@ const auth = ({ navigation }) => {
               <Text style={authStyles.buttonText}>Intră în cont</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </ScrollView>
+      </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </ImageBackground>
   );
