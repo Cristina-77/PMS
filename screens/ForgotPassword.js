@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ImageBackground, useWindowDimensions } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, useWindowDimensions,KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback,ScrollView } from 'react-native';
 import authStyles from '../styles/Forgot.styles';
 import { Alert } from 'react-native';
 import auth from '@react-native-firebase/auth';
@@ -39,16 +39,15 @@ auth()
       style={authStyles.background}
     >
     <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={authStyles.flex}
-    >
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            style={authStyles.flex}
+          >
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <ScrollView
       contentContainerStyle={authStyles.container}
       keyboardShouldPersistTaps="handled"
     >
-        <View style={authStyles.formContainer}></View>
-        <View style={isPortrait ? authStyles.portraitContainer : authStyles.landscapeContainer}>
+      <View style={authStyles.formContainer}>
         <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Resetare Parolă</Text>
         <TextInput
           style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}

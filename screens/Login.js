@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions, Keyboard, TouchableWithoutFeedback,ScrollView  } from 'react-native';
 import authStyles from '../styles/Login.styles';
 import { Alert } from 'react-native';
 import { verificareLogare } from '../src/services/firebase';
 
-const auth = ({ navigation }) => {
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -87,4 +87,4 @@ const auth = ({ navigation }) => {
 
 
 
-export default auth;
+export default Login;

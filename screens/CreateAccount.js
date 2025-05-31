@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions, Keyboard, TouchableWithoutFeedback,ScrollView  } from 'react-native';
 import authStyles from '../styles/Create.styles';
 import { adaugareUser, verificareExistaUser } from '../src/services/firebase';
 import {Alert} from 'react-native';
@@ -40,7 +40,7 @@ const CreateAccount = ({ navigation }) => {
     >
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={authStyles.container}
+        style={authStyles.flex}
       >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ScrollView

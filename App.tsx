@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import auth from './screens/Login';
+import Login from './screens/Login';
 import CreateAccount from './screens/CreateAccount';
 import ForgotPassword from './screens/ForgotPassword'; 
 
@@ -21,7 +21,7 @@ const App = () => {
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen 
           name="Login" 
-          component={auth} 
+          component={Login} 
           options={{ 
             headerShown: false,
             title: 'Login'
