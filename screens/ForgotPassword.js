@@ -1,10 +1,6 @@
 
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import { View, Text, TextInput, TouchableOpacity, ImageBackground, useWindowDimensions } from 'react-native';
-=======
-import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions,ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
->>>>>>> 6e479df873620439619a8cc142071198ca3c3fed
 import authStyles from '../styles/Forgot.styles';
 import { Alert } from 'react-native';
 import auth from '@react-native-firebase/auth';
@@ -42,31 +38,17 @@ auth()
       source={require('../icons/login.jpg')} 
       style={authStyles.background}
     >
-<<<<<<< HEAD
     <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={authStyles.flex}
     >
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-=======
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={authStyles.flex}
-        >
-       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
->>>>>>> 6e479df873620439619a8cc142071198ca3c3fed
     <ScrollView
       contentContainerStyle={authStyles.container}
       keyboardShouldPersistTaps="handled"
     >
-<<<<<<< HEAD
         <View style={authStyles.formContainer}></View>
         <View style={isPortrait ? authStyles.portraitContainer : authStyles.landscapeContainer}>
-=======
-        <View style={authStyles.formContainer}>
-          
-     
->>>>>>> 6e479df873620439619a8cc142071198ca3c3fed
         <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Resetare Parolă</Text>
         <TextInput
           style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
@@ -81,13 +63,8 @@ auth()
         </TouchableOpacity>
       </View>
       </ScrollView>
-<<<<<<< HEAD
     </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
-=======
-            </TouchableWithoutFeedback>
-            </KeyboardAvoidingView>
->>>>>>> 6e479df873620439619a8cc142071198ca3c3fed
     </ImageBackground>
   );
 };

@@ -84,8 +84,9 @@ const authStyles = StyleSheet.create({
   linksContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '110%',
+    width: '120%',
     marginBottom: 20,
+    gap: 50,
   },
 
   landscapeTitle: {

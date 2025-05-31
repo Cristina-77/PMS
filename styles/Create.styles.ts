@@ -72,6 +72,19 @@ const authStyles = StyleSheet.create({
     fontSize: 18,
     color: '#333',
   },
+ 
+  linkText: {
+    fontSize: 16,
+    color: '#333',
+    textDecorationLine: 'none',
+  },
+  linksContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '120%',
+    marginBottom: 20,
+    gap: 50,
+  },
 
   landscapeTitle: {
     marginTop: '-17%',
