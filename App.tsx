@@ -5,12 +5,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './screens/Login';
 import CreateAccount from './screens/CreateAccount';
 import ForgotPassword from './screens/ForgotPassword'; 
+import Main from './screens/Main'; // Placeholder for Main screen
 
 
 type RootStackParamList = {
   Login: undefined;
   CreateAccount: undefined;
   ForgotPassword: undefined;
+  Main: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -49,6 +51,14 @@ const App = () => {
             headerTintColor: '#333'
           }} 
         />
+        <Stack.Screen
+          name="Main" 
+          component={Main} // Placeholder for Main screen
+          options={{ 
+            headerShown: false,
+            title: 'Main'
+          }}
+          />
       </Stack.Navigator>
     </NavigationContainer>
   );

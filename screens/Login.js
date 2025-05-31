@@ -18,7 +18,8 @@ const Login = ({ navigation }) => {
       return ;
     }
     else{
-      Alert.alert("Logare reușită!");    }
+      Alert.alert("Logare reușită!");
+      navigation.navigate('Main');}
 
   };
 
