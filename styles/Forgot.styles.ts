@@ -7,6 +7,7 @@ const authStyles = StyleSheet.create({
   },
   flex: {
     flex: 1,
+<<<<<<< HEAD
   },
    container: {
     flexGrow: 1,
@@ -14,6 +15,15 @@ const authStyles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
+=======
+  },
+   container: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+>>>>>>> 6e479df873620439619a8cc142071198ca3c3fed
   formContainer: {
    width: '100%',
     maxWidth: 400,

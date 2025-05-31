@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions } from 'react-native';
+=======
+import {View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions,ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+>>>>>>> 6e479df873620439619a8cc142071198ca3c3fed
 import authStyles from '../styles/Login.styles';
 import { Alert } from 'react-native';
 import { verificareLogare } from '../src/services/firebase';
@@ -35,6 +39,7 @@ const auth = ({ navigation }) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={authStyles.flex}
       >
+<<<<<<< HEAD
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ScrollView
         contentContainerStyle={authStyles.container}
@@ -42,6 +47,16 @@ const auth = ({ navigation }) => {
       >
         <View style={authStyles.formContainer}>
           <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Creează Un Cont</Text>
+=======
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <ScrollView
+      contentContainerStyle={authStyles.container}
+      keyboardShouldPersistTaps="handled"
+    >
+        <View style={authStyles.formContainer}>
+          <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Creează Un Cont</Text>
+          
+>>>>>>> 6e479df873620439619a8cc142071198ca3c3fed
           
             <TextInput
               style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
@@ -79,7 +94,11 @@ const auth = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </ScrollView>
+<<<<<<< HEAD
       </TouchableWithoutFeedback>
+=======
+             </TouchableWithoutFeedback>
+>>>>>>> 6e479df873620439619a8cc142071198ca3c3fed
       </KeyboardAvoidingView>
     </ImageBackground>
   );

@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions } from 'react-native';
+=======
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions,ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+>>>>>>> 6e479df873620439619a8cc142071198ca3c3fed
 import authStyles from '../styles/Create.styles';
 import { adaugareUser, verificareExistaUser } from '../src/services/firebase';
 import {Alert} from 'react-native';
@@ -40,8 +44,9 @@ const CreateAccount = ({ navigation }) => {
     >
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={authStyles.container}
+        style={authStyles.flex}
       >
+<<<<<<< HEAD
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ScrollView
         contentContainerStyle={authStyles.container}
@@ -49,6 +54,17 @@ const CreateAccount = ({ navigation }) => {
       >
         <View style={authStyles.formContainer}>
           <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Creează Un Cont</Text>
+=======
+         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <ScrollView
+      contentContainerStyle={authStyles.container}
+      keyboardShouldPersistTaps="handled"
+    >
+        <View style={authStyles.formContainer}>
+          <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Creează Un Cont</Text>
+          
+          
+>>>>>>> 6e479df873620439619a8cc142071198ca3c3fed
             <TextInput
               style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
               placeholder="Nume"
@@ -97,10 +113,20 @@ const CreateAccount = ({ navigation }) => {
               secureTextEntry
               required
             />
+<<<<<<< HEAD
             <TouchableOpacity style={isPortrait ? authStyles.portraitButton : authStyles.landscapeButton} onPress={handleRegister}>
               <Text style={authStyles.buttonText}>Creare cont</Text>
             </TouchableOpacity>
         </View>
+=======
+
+            
+            <TouchableOpacity style={isPortrait ? authStyles.portraitButton : authStyles.landscapeButton} onPress={handleRegister}>
+              <Text style={authStyles.buttonText}>Creare cont</Text>
+            </TouchableOpacity>
+          </View>
+        
+>>>>>>> 6e479df873620439619a8cc142071198ca3c3fed
       </ScrollView>
       </TouchableWithoutFeedback>
       </KeyboardAvoidingView>

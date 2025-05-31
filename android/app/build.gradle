@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 plugins {
   id 'com.android.application'
 
@@ -8,6 +9,12 @@ plugins {
 
   
 }
+=======
+apply plugin: "com.android.application"
+apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: "com.facebook.react"
+apply plugin: 'com.google.gms.google-services'
+>>>>>>> 6e479df873620439619a8cc142071198ca3c3fed
 
 
 /**
