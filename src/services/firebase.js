@@ -1,8 +1,10 @@
 
 import database from '@react-native-firebase/database';
 import { data } from 'react-router-dom';
+import auth from '@react-native-firebase/auth';
+import { AccessibilityInfo } from 'react-native';
 
-export const adaugareUser  = async (id, nume, prenume, adresaEmail, parola) => {
+export const adaugareUser  = async (id, nume, prenume, adresaEmail, parola,rol) => {
     try{
         await database()
             .ref('/users/' + id)
@@ -10,7 +12,8 @@ export const adaugareUser  = async (id, nume, prenume, adresaEmail, parola) => {
                 nume: nume,
                 adresaEmail: adresaEmail,
                 prenume: prenume,
-                parola: parola
+                parola: parola,
+                rol: rol
             });
             console.log('User adaugat cu succes:', id);
     }

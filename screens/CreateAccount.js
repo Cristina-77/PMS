@@ -3,7 +3,8 @@ import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoid
 import authStyles from '../styles/Create.styles';
 import { adaugareUser, verificareExistaUser } from '../src/services/firebase';
 import {Alert} from 'react-native';
-
+import auth from '@react-native-firebase/auth';
+import { Picker } from '@react-native-picker/picker';
 
 const CreateAccount = ({ navigation }) => {
   const [lastName, setLastName] = useState('');
@@ -11,6 +12,7 @@ const CreateAccount = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [selectedValue, setSelectedValue] = useState("");
 
   const handleRegister = async () => {
     if (!lastName || !firstName || !email || !password) {
@@ -97,6 +99,17 @@ const CreateAccount = ({ navigation }) => {
               secureTextEntry
               required
             />
+
+             <Picker style={authStyles.picker}
+                selectedValue={selectedValue}
+                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+            >
+                <Picker.Item label="Selectează rolul" value="" />
+                <Picker.Item label="Medic" value="Medic" />
+                <Picker.Item label="Asistenta" value="Asistenta" />
+                <Picker.Item label="Receptie" value="Receptie" />
+            </Picker>
+
             <TouchableOpacity style={isPortrait ? authStyles.portraitButton : authStyles.landscapeButton} onPress={handleRegister}>
               <Text style={authStyles.buttonText}>Creare cont</Text>
             </TouchableOpacity>
