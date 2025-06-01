@@ -1,8 +1,15 @@
 
 import database from '@react-native-firebase/database';
 import { data } from 'react-router-dom';
+<<<<<<< HEAD
+import auth from '@react-native-firebase/auth';
+import { AccessibilityInfo } from 'react-native';
+
+export const adaugareUser  = async (id, nume, prenume, adresaEmail, rol) => {
+=======
 
 export const adaugareUser  = async (id, nume, prenume, adresaEmail, parola) => {
+>>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
     try{
         await database()
             .ref('/users/' + id)
@@ -10,15 +17,27 @@ export const adaugareUser  = async (id, nume, prenume, adresaEmail, parola) => {
                 nume: nume,
                 adresaEmail: adresaEmail,
                 prenume: prenume,
+<<<<<<< HEAD
+                rol: rol
+            }); 
+        console.log('User adaugat cu succes:', id);
+        
+        
+=======
                 parola: parola
             });
             console.log('User adaugat cu succes:', id);
+>>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
     }
     catch (error) {
         console.error('Eroare la adaugarea userului:', error);
     }
 };
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
 export const verificareExistaUser= async (adresaEmail) => {
     try{
         const date = await database()
@@ -34,6 +53,8 @@ export const verificareExistaUser= async (adresaEmail) => {
     } 
 };
 
+<<<<<<< HEAD
+=======
 export const verificareLogare = async(adresaEmail, parola) => {
     try {
         const date= await database()
@@ -66,6 +87,7 @@ export const verificareLogare = async(adresaEmail, parola) => {
         return null;    
     }
 };
+>>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
 
 export const recuperareParola =async (adresaEmail) => {
     try{

@@ -1,5 +1,15 @@
 
 import React, { useState } from 'react';
+<<<<<<< HEAD
+import { View, Text, TextInput, KeyboardAvoidingView , TouchableWithoutFeedback , Keyboard, ScrollView,TouchableOpacity, ImageBackground, useWindowDimensions } from 'react-native';
+import authStyles from '../styles/Forgot.styles';
+import { Alert } from 'react-native';
+import auth from '@react-native-firebase/auth';
+
+
+const ForgotPassword = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+=======
 import { View, Text, TextInput, TouchableOpacity, ImageBackground, useWindowDimensions,KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback,ScrollView } from 'react-native';
 import authStyles from '../styles/Forgot.styles';
 import { Alert } from 'react-native';
@@ -7,6 +17,7 @@ import auth from '@react-native-firebase/auth';
 const ForgotPassword = ({ navigation }) => {
   const [email, setEmail] = useState('');
 
+>>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
   const handleSubmit = async () => {
     if (!email) {
   Alert.alert("Te rugăm să introduci adresa de e-mail.");
@@ -39,15 +50,26 @@ auth()
       style={authStyles.background}
     >
     <KeyboardAvoidingView
+<<<<<<< HEAD
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={authStyles.flex}
+    >
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+=======
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             style={authStyles.flex}
           >
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+>>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
     <ScrollView
       contentContainerStyle={authStyles.container}
       keyboardShouldPersistTaps="handled"
     >
+<<<<<<< HEAD
+        <View style={authStyles.formContainer}>
+=======
       <View style={authStyles.formContainer}>
+>>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
         <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Resetare Parolă</Text>
         <TextInput
           style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}

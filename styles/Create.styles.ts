@@ -100,6 +100,17 @@ const authStyles = StyleSheet.create({
     fontSize: 21,
     fontWeight: 'bold',
   },
+
+  picker:{
+    width: '120%',
+    height: 60,
+    backgroundColor: 'white',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    paddingHorizontal: 15,
+    marginVertical: 10,
+  },
 });
 
 export default authStyles;
