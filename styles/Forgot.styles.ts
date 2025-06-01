@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 const authStyles = StyleSheet.create({
-  background: {
+   background: {
     flex: 1,
     resizeMode: 'cover',
   },
@@ -20,7 +20,6 @@ const authStyles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
   },
-  
   landscapeInput: {
     width: '120%',
     height: 60,

@@ -2,15 +2,17 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import auth from './screens/Login';
+import Login from './screens/Login';
 import CreateAccount from './screens/CreateAccount';
 import ForgotPassword from './screens/ForgotPassword'; 
+import Main from './screens/Main'; // Placeholder for Main screen
 
 
 type RootStackParamList = {
   Login: undefined;
   CreateAccount: undefined;
   ForgotPassword: undefined;
+  Main: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -21,7 +23,7 @@ const App = () => {
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen 
           name="Login" 
-          component={auth} 
+          component={Login} 
           options={{ 
             headerShown: false,
             title: 'Login'
@@ -49,6 +51,14 @@ const App = () => {
             headerTintColor: '#333'
           }} 
         />
+        <Stack.Screen
+          name="Main" 
+          component={Main} // Placeholder for Main screen
+          options={{ 
+            headerShown: false,
+            title: 'Main'
+          }}
+          />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -68,8 +78,3 @@ const styles = StyleSheet.create({
 });
 
 export default App;
-
-
-
-
-

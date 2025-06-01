@@ -1,13 +1,46 @@
 import React, { useState } from 'react';
-import {View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions,ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Keyboard, ScrollView, Scroll,TouchableWithoutFeedback, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions } from 'react-native';
 import authStyles from '../styles/Login.styles';
+import { Alert } from 'react-native';
+import auth from '@react-native-firebase/auth'; 
+import { verificareExistaUser } from '../src/services/firebase';
+import { Picker } from '@react-native-picker/picker'; 
+import database from '@react-native-firebase/database';
 
-const auth = ({ navigation }) => {
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    console.log('Login attempted with:', email, password);
+  const handleLogin = async () => {
+    if (!email || !password){
+      Alert.alert("Toate campurile trebuie completate")
+      return;
+    }
+
+    try{
+       const credentialeUser= await auth().signInWithEmailAndPassword(email, password);
+       if (credentialeUser){
+         const uid = credentialeUser.user.uid;
+          Alert.alert("Logare reusita!");
+          const snapshot = await database().ref(`/users/${uid}/rol`).once('value');
+          const rol = snapshot.val();
+
+          if (rol === 'Receptie') {
+            navigation.navigate('Main');
+          } else if (rol === 'Medic' || rol === 'Asistenta') {
+            navigation.navigate('Alerte');
+          } else {
+            Alert.alert('Rol necunoscut. Contactează administratorul.');
+          }
+
+       }
+       else{
+          Alert.alert("Logare esuata! Verifica datele introduse.");
+       }
+    } catch(error){
+      console.error("Eroare la logare:", error);
+      Alert.alert("Eroare la logare", "Verifica datele introduse și încearcă din nou.");
+    }
   };
 
   const { width, height } = useWindowDimensions();
@@ -21,16 +54,15 @@ const auth = ({ navigation }) => {
     >
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={authStyles.container}
+        style={authStyles.flex}
       >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-    <ScrollView
-      contentContainerStyle={authStyles.container}
-      keyboardShouldPersistTaps="handled"
-    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <ScrollView
+        contentContainerStyle={authStyles.container}
+        keyboardShouldPersistTaps="handled"
+      >
         <View style={authStyles.formContainer}>
-          <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Creează Un Cont</Text>
-          
+          <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Bine ați (Re)Venit!</Text>
           
             <TextInput
               style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
@@ -68,7 +100,7 @@ const auth = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </ScrollView>
-             </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </ImageBackground>
   );
@@ -76,4 +108,4 @@ const auth = ({ navigation }) => {
 
 
 
-export default auth;
+export default Login;

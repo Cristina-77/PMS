@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 const authStyles = StyleSheet.create({
-  background: {
+   background: {
     flex: 1,
     resizeMode: 'cover',
   },
@@ -42,6 +42,7 @@ const authStyles = StyleSheet.create({
     borderColor: '#ccc',
     padding: 15,
     marginLeft: '50%',
+    color: '#333',
   },
   landscapeButton: {
     width: '120%',
@@ -53,6 +54,7 @@ const authStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     marginTop: 10,
+    color: '#333',
   },
   portraitButton: {
     width: '200%',
@@ -70,6 +72,19 @@ const authStyles = StyleSheet.create({
     fontSize: 18,
     color: '#333',
   },
+ 
+  linkText: {
+    fontSize: 16,
+    color: '#333',
+    textDecorationLine: 'none',
+  },
+  linksContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '120%',
+    marginBottom: 20,
+    gap: 50,
+  },
 
   landscapeTitle: {
     marginTop: '-17%',
@@ -84,6 +99,17 @@ const authStyles = StyleSheet.create({
     color: '#333',
     fontSize: 21,
     fontWeight: 'bold',
+  },
+
+  picker:{
+    width: '120%',
+    height: 60,
+    backgroundColor: 'white',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    paddingHorizontal: 15,
+    marginVertical: 10,
   },
 });
 
