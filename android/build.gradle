@@ -22,9 +22,5 @@ buildscript {
 
 plugins {
     id("com.facebook.react.rootproject") apply false
-<<<<<<< HEAD
-}
-=======
     
 }
->>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
