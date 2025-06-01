@@ -1,5 +1,6 @@
 plugins {
   id 'com.android.application'
+<<<<<<< HEAD
   id 'com.google.gms.google-services'
   id "org.jetbrains.kotlin.android"
   id "com.facebook.react"
@@ -8,6 +9,16 @@ apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 apply plugin: 'com.google.gms.google-services'
+=======
+
+  // Add the Google services Gradle plugin
+  id 'com.google.gms.google-services'
+  id "org.jetbrains.kotlin.android"
+  id "com.facebook.react"
+
+  
+}
+>>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
 
 
 /**
@@ -132,4 +143,10 @@ dependencies {
   // TODO: Add the dependencies for Firebase products you want to use
   // When using the BoM, don't specify versions in Firebase dependencies
   implementation 'com.google.firebase:firebase-analytics'
+<<<<<<< HEAD
 }
+=======
+}
+
+
+>>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8

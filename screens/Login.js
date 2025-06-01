@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { View, Text, TextInput, TouchableOpacity, Keyboard, ScrollView, Scroll,TouchableWithoutFeedback, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions } from 'react-native';
 import authStyles from '../styles/Login.styles';
 import { Alert } from 'react-native';
@@ -6,6 +7,12 @@ import auth from '@react-native-firebase/auth';
 import { verificareExistaUser } from '../src/services/firebase';
 import { Picker } from '@react-native-picker/picker'; 
 import database from '@react-native-firebase/database';
+=======
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions, Keyboard, TouchableWithoutFeedback,ScrollView  } from 'react-native';
+import authStyles from '../styles/Login.styles';
+import { Alert } from 'react-native';
+import { verificareLogare } from '../src/services/firebase';
+>>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -16,6 +23,7 @@ const Login = ({ navigation }) => {
       Alert.alert("Toate campurile trebuie completate")
       return;
     }
+<<<<<<< HEAD
 
     try{
        const credentialeUser= await auth().signInWithEmailAndPassword(email, password);
@@ -41,6 +49,16 @@ const Login = ({ navigation }) => {
       console.error("Eroare la logare:", error);
       Alert.alert("Eroare la logare", "Verifica datele introduse și încearcă din nou.");
     }
+=======
+    if (await verificareLogare(email, password) === null){
+      Alert.alert("E-mail sau parolă incorectă");
+      return ;
+    }
+    else{
+      Alert.alert("Logare reușită!");
+      navigation.navigate('Main');}
+
+>>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
   };
 
   const { width, height } = useWindowDimensions();

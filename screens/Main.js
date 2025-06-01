@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions, Keyboard, TouchableWithoutFeedback,ScrollView  } from 'react-native';
 import authStyles from '../styles/Main.styles';
 import {Alert} from 'react-native';
+<<<<<<< HEAD
 import { doc, setDoc } from '@react-native-firebase/firestore';
 import { set } from '@react-native-firebase/database';
 import { Picker } from '@react-native-picker/picker';
@@ -22,12 +23,17 @@ const Main = ({ navigation }) => {
   const handleRegister = async () => {  
     console.log("Selected Value:", selectedValue);
   }
+=======
+
+const Main = ({ navigation }) => {
+>>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
 return (
     <ImageBackground 
       source={require('../icons/login.jpg')} 
       style={authStyles.background}
       resizeMode="cover"
     >
+<<<<<<< HEAD
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={authStyles.flex}
@@ -123,6 +129,10 @@ return (
       </KeyboardAvoidingView>
     </ImageBackground>
   );
+=======
+    </ImageBackground>
+)
+>>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
 }
 
 export default Main;

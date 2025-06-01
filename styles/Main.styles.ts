@@ -5,6 +5,7 @@ const authStyles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
   },
+<<<<<<< HEAD
   flex: {
     flex: 1,
   },
@@ -99,6 +100,8 @@ const authStyles = StyleSheet.create({
     paddingHorizontal: 15,
     marginVertical: 10,
   },
+=======
+>>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
 });
 
 export default authStyles;

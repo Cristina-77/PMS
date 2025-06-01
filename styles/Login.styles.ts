@@ -44,6 +44,7 @@ const authStyles = StyleSheet.create({
     borderColor: '#ccc',
     padding: 15,
     marginLeft: '50%',
+    
   },
 
   landscapeButton: {
