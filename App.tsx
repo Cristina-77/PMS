@@ -53,7 +53,7 @@ const App = () => {
         />
         <Stack.Screen
           name="Main" 
-          component={Main} // Placeholder for Main screen
+          component={Main}
           options={{ 
             headerShown: false,
             title: 'Main'
