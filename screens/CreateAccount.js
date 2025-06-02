@@ -1,18 +1,10 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
-import { View, Text, TextInput, TouchableOpacity, ImageBackground, TouchableWithoutFeedback, Keyboard , ScrollView,KeyboardAvoidingView, Platform, useWindowDimensions } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions, Keyboard, TouchableWithoutFeedback,ScrollView  } from 'react-native';
 import authStyles from '../styles/Create.styles';
 import { adaugareUser, verificareExistaUser } from '../src/services/firebase';
 import {Alert} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { Picker } from '@react-native-picker/picker';
-=======
-import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions, Keyboard, TouchableWithoutFeedback,ScrollView  } from 'react-native';
-import authStyles from '../styles/Create.styles';
-import { adaugareUser, verificareExistaUser } from '../src/services/firebase';
-import {Alert} from 'react-native';
->>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
-
 
 const CreateAccount = ({ navigation }) => {
   const [lastName, setLastName] = useState('');
@@ -22,9 +14,8 @@ const CreateAccount = ({ navigation }) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [selectedValue, setSelectedValue] = useState("");
 
-
   const handleRegister = async () => {
-    if (!lastName || !firstName || !email || !password || ! confirmPassword || !selectedValue) {
+    if (!lastName || !firstName || !email || !password || !confirmPassword || !selectedValue) {
       Alert.alert("Toate câmpurile sunt obligatorii!");
       return;
     }
@@ -32,7 +23,7 @@ const CreateAccount = ({ navigation }) => {
       Alert.alert("Parolele nu se potrivesc!");
       return;
     }
-    if (await verificareExistaUser(email)!== false) {
+     if (await verificareExistaUser(email)!== false) {
         Alert.alert("Exista deja un cont cu acest e-mail")
         return;
     }
@@ -52,25 +43,6 @@ const CreateAccount = ({ navigation }) => {
         console.error('Eroare la crearea contului:', error);
       }
     }
-
-<<<<<<< HEAD
-=======
-  const handleRegister = async () => {
-    if (!lastName || !firstName || !email || !password) {
-      Alert.alert("Toate câmpurile sunt obligatorii!");
-      return;
-    }
-    if (password !== confirmPassword) {
-      Alert.alert("Parolele nu se potrivesc!");
-      return;
-    }
-    if (await verificareExistaUser(email)){
-        Alert.alert("Exista deja un cont cu acest e-mail")
-        return;
-    }
-    adaugareUser(2, firstName, lastName, email, password) ;
-    Alert.alert("Cont creat cu succes!");
->>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
   };
 
   const { width, height } = useWindowDimensions();
@@ -141,8 +113,8 @@ const CreateAccount = ({ navigation }) => {
               secureTextEntry
               required
             />
-<<<<<<< HEAD
-            <Picker style={authStyles.picker}
+
+             <Picker style={authStyles.picker}
                 selectedValue={selectedValue}
                 onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
             >
@@ -152,9 +124,6 @@ const CreateAccount = ({ navigation }) => {
                 <Picker.Item label="Receptie" value="Receptie" />
             </Picker>
 
-
-=======
->>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
             <TouchableOpacity style={isPortrait ? authStyles.portraitButton : authStyles.landscapeButton} onPress={handleRegister}>
               <Text style={authStyles.buttonText}>Creare cont</Text>
             </TouchableOpacity>

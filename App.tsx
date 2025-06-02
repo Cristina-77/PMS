@@ -6,10 +6,11 @@ import Login from './screens/Login';
 import CreateAccount from './screens/CreateAccount';
 import ForgotPassword from './screens/ForgotPassword'; 
 import Main from './screens/Main'; // Placeholder for Main screen
-
+import Alerte from './screens/Alerte'; // Placeholder for Alerte screen
 
 type RootStackParamList = {
   Login: undefined;
+  Alerte: undefined;
   CreateAccount: undefined;
   ForgotPassword: undefined;
   Main: undefined;
@@ -57,6 +58,14 @@ const App = () => {
           options={{ 
             headerShown: false,
             title: 'Main'
+          }}
+          />
+         <Stack.Screen
+          name="Alerte" 
+          component={Alerte} // Placeholder for Main screen
+          options={{ 
+            headerShown: false,
+            title: 'Alerte'
           }}
           />
       </Stack.Navigator>

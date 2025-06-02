@@ -5,7 +5,6 @@ const authStyles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
   },
-<<<<<<< HEAD
   flex: {
     flex: 1,
   },
@@ -23,7 +22,7 @@ const authStyles = StyleSheet.create({
   },
   landscapeInput: {
     width: '120%',
-    height: 40,
+    height: 60,
     marginVertical: 10,
     fontSize: 18,
     backgroundColor: 'white',
@@ -34,7 +33,7 @@ const authStyles = StyleSheet.create({
   },
     portraitInput: {
     width: '200%',
-    height: 40,
+    height: 60,
     marginVertical: 10,
     fontSize: 18,
     backgroundColor: 'white',
@@ -47,7 +46,7 @@ const authStyles = StyleSheet.create({
   },
   landscapeButton: {
     width: '120%',
-    height: 40,
+    height: 60,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
@@ -59,7 +58,7 @@ const authStyles = StyleSheet.create({
   },
   portraitButton: {
     width: '200%',
-    height: 40,
+    height: 60,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
@@ -79,7 +78,7 @@ const authStyles = StyleSheet.create({
     marginTop: '-17%',
     textAlign: 'center',
     color: '#333',
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: 'bold',
   },
   portraitTitle: {
@@ -92,16 +91,16 @@ const authStyles = StyleSheet.create({
 
   picker:{
     width: '120%',
-    height: 40,
+    height: 60,
+    marginVertical: 10,
+    fontSize: 18,
     backgroundColor: 'white',
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#ccc',
-    paddingHorizontal: 15,
-    marginVertical: 10,
+    padding: 15,
+    color: '#000',
   },
-=======
->>>>>>> dea2f00be150a53d877212064ccb31ada9469cd8
 });
 
 export default authStyles;
