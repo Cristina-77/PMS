@@ -1,0 +1,8 @@
+<resources>
+    <!-- Tema principală a aplicației tale -->
+    <style name="Theme.PatientMonitoringSystem" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- alte atribute ale temei tale -->
+        <item name="colorPrimary">@color/white</item>
+    </style>
+
+</resources>
