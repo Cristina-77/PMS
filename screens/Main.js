@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions, Keyboard, TouchableWithoutFeedback,ScrollView  } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions, Keyboard, TouchableWithoutFeedback,ScrollView,SafeAreaView  } from 'react-native';
 import authStyles from '../styles/Main.styles';
 import {Alert} from 'react-native';
 import { doc, setDoc } from '@react-native-firebase/firestore';
@@ -17,7 +17,7 @@ const Main = ({ navigation }) => {
   const [cnp,setCnp] = useState('');
   const [doctor, setDoctor] = useState('');
   const [nrtel, setNrTel]= useState('');
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState('');
 
   const handleRegister = async () => {  
     console.log("Selected Value:", selectedValue);
@@ -33,84 +33,97 @@ const Main = ({ navigation }) => {
         style={authStyles.flex}
       >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <SafeAreaView style={authStyles.flex}>
       <ScrollView
-        contentContainerStyle={authStyles.container}
+        contentContainerStyle={[authStyles.container, {flexGrow: 1, paddingTop:80}]}
         keyboardShouldPersistTaps="handled"
       >
         <View style={authStyles.formContainer}>
-          <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Creează Un Cont</Text>
-            <TextInput
-              style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
-              placeholder="Nume"
-              placeholderTextColor={'#888'}
-              value={lastName}
-              onChangeText={setLastName}
-              required
-            />
-            
-            <TextInput
-              style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
-              placeholder="Prenume"
-              placeholderTextColor={'#888'}
-              value={firstName}
-              onChangeText={setFirstName}
-              required
-            />
-            
-            <TextInput
-              style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
-              placeholder="Email"
-              placeholderTextColor={'#888'}
-              value={email}
-              onChangeText={setEmail}
-              keyboardType="email-address"
-              autoCapitalize="none"
-              required
-            />
-            
-            <TextInput
-              style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
-              placeholder="Vârsta"
-              placeholderTextColor={'#888'}
-              value={varsta}
-              onChangeText={setVarsta}
-              secureTextEntry={true}
-              required
-            />
-            
-            <TextInput
-              style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
-              placeholder="Doctor"
-              placeholderTextColor={'#888'}
-              value={doctor}
-              onChangeText={setDoctor}
-              required
-            />
-            <TextInput
-              style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
-              placeholder="CNP"
-              placeholderTextColor={'#888'}
-              value={cnp}
-              onChangeText={setCnp}
-              required
-            />
-            <TextInput
-              style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
-              placeholder="Numar de telefon"
-              placeholderTextColor={'#888'}
-              value={nrtel}
-              onChangeText={setNrTel}
-              required
-            />
+          
+            <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Introducere Pacienți</Text>
+              <TextInput
+                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                placeholder="Nume"
+                placeholderTextColor={'#888'}
+                value={lastName}
+                onChangeText={setLastName}
+                required
+              />
+              
+              <TextInput
+                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                placeholder="Prenume"
+                placeholderTextColor={'#888'}
+                value={firstName}
+                onChangeText={setFirstName}
+                required
+              />
+              
+              <TextInput
+                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                placeholder="Email"
+                placeholderTextColor={'#888'}
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                required
+              />
+              
+              <TextInput
+                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                placeholder="Vârsta"
+                placeholderTextColor={'#888'}
+                value={varsta}
+                onChangeText={setVarsta}
+                secureTextEntry={true}
+                required
+              />
+              
+              <TextInput
+                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                placeholder="Doctor"
+                placeholderTextColor={'#888'}
+                value={doctor}
+                onChangeText={setDoctor}
+                required
+              />
+              <TextInput
+                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                placeholder="CNP"
+                placeholderTextColor={'#888'}
+                value={cnp}
+                onChangeText={setCnp}
+                required
+              />
+              <TextInput
+                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                placeholder="Numar de telefon"
+                placeholderTextColor={'#888'}
+                value={nrtel}
+                onChangeText={setNrTel}
+                required
+              />
 
-           
+              <Picker style={authStyles.picker}
+                  selectedValue={selectedValue}
+                  onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+              >
+                  <Picker.Item label="Sex" value="" />
+                  <Picker.Item label="Feminin" value="Feminin" />
+                  <Picker.Item label="Masculin" value="Masculin" />
+              </Picker>
 
-
+            
             <TouchableOpacity style={isPortrait ? authStyles.portraitButton : authStyles.landscapeButton} onPress={handleRegister}>
-              <Text style={authStyles.buttonText}>Creare cont</Text>
+              <Text style={authStyles.buttonText}>Introducere Pacient</Text>
             </TouchableOpacity>
+
+            
+         
         </View>
       </ScrollView>
+       </SafeAreaView>
       </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </ImageBackground>
