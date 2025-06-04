@@ -16,9 +16,23 @@ const CreateAccount = ({ navigation }) => {
 
   const handleRegister = async () => {
     if (!lastName || !firstName || !email || !password || !confirmPassword || !selectedValue) {
+
       Alert.alert("Toate câmpurile sunt obligatorii!");
       return;
     }
+    if (password.length < 6){
+      Alert.alert("Parola trebuie să aibă cel puțin 6 caractere!");
+      return;
+    }
+    if (!email.includes('@')) {
+      Alert.alert("Adresa de e-mail nu este validă!");
+      return;
+    }
+    if (lastName.length < 2 || firstName.length < 2) {
+      Alert.alert("Numele și prenumele trebuie să aibă cel puțin 2 caractere fiecare!");
+      return;
+    }
+
     if (password !== confirmPassword) {
       Alert.alert("Parolele nu se potrivesc!");
       return;
@@ -43,6 +57,13 @@ const CreateAccount = ({ navigation }) => {
         console.error('Eroare la crearea contului:', error);
       }
     }
+
+    if (await verificareExistaUser(email)){
+        Alert.alert("Exista deja un cont cu acest e-mail")
+        return;
+    }
+    adaugareUser(2, firstName, lastName, email, password) ;
+    Alert.alert("Cont creat cu succes!");
   };
 
   const { width, height } = useWindowDimensions();

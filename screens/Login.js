@@ -41,6 +41,13 @@ const Login = ({ navigation }) => {
       console.error("Eroare la logare:", error);
       Alert.alert("Eroare la logare", "Verifica datele introduse și încearcă din nou.");
     }
+    if (await verificareLogare(email, password) === null){
+      Alert.alert("E-mail sau parolă incorectă");
+      return ;
+    }
+    else{
+      Alert.alert("Logare reușită!");
+      navigation.navigate('Main');}
 
   };
 

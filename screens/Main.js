@@ -103,22 +103,22 @@ const Main = ({ navigation }) => {
                 required
               />
               
-              <TextInput
-                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
-                placeholder="E-mail doctor"
-                placeholderTextColor={'#888'}
-                value={doctor}
-                onChangeText={setDoctor}
-                required
-              />
-              <TextInput
-                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
-                placeholder="CNP"
-                placeholderTextColor={'#888'}
-                value={cnp}
-                onChangeText={setCnp}
-                required
-              />
+<TextInput
+  style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+  placeholder="E-mail doctor"
+  placeholderTextColor={'#888'}
+  value={doctor}
+  onChangeText={setDoctor}
+  required
+/>
+<TextInput
+  style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+  placeholder="CNP"
+  placeholderTextColor={'#888'}
+  value={cnp}
+  onChangeText={setCnp}
+  required
+/>
               <TextInput
                 style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
                 placeholder="Numar de telefon"

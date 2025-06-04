@@ -100,7 +100,7 @@ const authStyles = StyleSheet.create({
     fontSize: 21,
     fontWeight: 'bold',
   },
-
+  
   picker:{
     width: '120%',
     height: 60,
