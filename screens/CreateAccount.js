@@ -3,7 +3,6 @@ import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoid
 import authStyles from '../styles/Create.styles';
 import { adaugareUser, verificareExistaUser } from '../src/services/firebase';
 import {Alert} from 'react-native';
-import auth from '@react-native-firebase/auth';
 import { Picker } from '@react-native-picker/picker';
 
 const CreateAccount = ({ navigation }) => {
@@ -122,3 +121,4 @@ const CreateAccount = ({ navigation }) => {
 };
 
 export default CreateAccount;
+

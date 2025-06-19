@@ -5,7 +5,13 @@ import {Alert} from 'react-native';
 import { doc, setDoc } from '@react-native-firebase/firestore';
 import { set } from '@react-native-firebase/database';
 import { Picker } from '@react-native-picker/picker';
-
+import { keccak256, toUtf8Bytes } from 'ethers';
+import { salveazaHashInBlockchain } from '../blockchain';
+import { verificaHashPacient } from '../blockchain';
+const genereazaHashPacient = (pacient) => {
+  const concatenat = `${pacient.nume}${pacient.prenume}${pacient.cnp}`;
+  return keccak256(toUtf8Bytes(concatenat));
+};
 
 const Main = ({ navigation }) => {
   const { width, height } = useWindowDimensions();
@@ -19,9 +25,36 @@ const Main = ({ navigation }) => {
   const [nrtel, setNrTel]= useState('');
   const [selectedValue, setSelectedValue] = useState('');
 
-  const handleRegister = async () => {  
-    console.log("Selected Value:", selectedValue);
+  const handleRegister = async () => {
+  const pacient = {
+    nume: lastName,
+    prenume: firstName,
+    email,
+    varsta: parseInt(varsta),
+    doctor,
+    cnp,
+    telefon: nrtel
+  };
+
+  const hash = genereazaHashPacient(pacient);
+  const exista = await verificaHashPacient(hash);
+
+  if (exista) {
+    Alert.alert("Pacient deja existent!", "Datele acestui pacient sunt deja în blockchain.");
+    return;
   }
+
+  // Salvează în Firebase
+  const ref = database().ref('/pacienti').push();
+  await ref.set(pacient);
+  console.log("Pacient salvat în Firebase cu ID:", ref.key);
+
+  // Salvează în blockchain
+  await salveazaHashInBlockchain(hash);
+
+  Alert.alert("Succes", "Pacient înregistrat!");
+};
+
   return (
     <ImageBackground 
       source={require('../icons/login.jpg')} 

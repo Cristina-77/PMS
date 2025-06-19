@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './screens/Login';
 import CreateAccount from './screens/CreateAccount';
 import ForgotPassword from './screens/ForgotPassword'; 
-import Main from './screens/Main'; // Placeholder for Main screen
+import Main from './screens/Main'; 
 
 
 type RootStackParamList = {
