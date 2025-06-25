@@ -7,9 +7,11 @@ import auth from '@react-native-firebase/auth';
 import { verificareExistaUser } from '../src/services/firebase';
 import { Picker } from '@react-native-picker/picker'; 
 import database from '@react-native-firebase/database';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [securizatParola, setSecurizatParola] = useState(true);
 
   const handleLogin = async () => {
     if (!email || !password){
@@ -23,12 +25,13 @@ const Login = ({ navigation }) => {
           Alert.alert("Logare reusita!");
           const snapshot = await database().ref(`/users/${uid}/rol`).once('value');
           const rol = snapshot.val();
-
           if (rol === 'Receptie') {
             navigation.navigate('Main');
-          } else if (rol === 'Medic' || rol === 'Asistenta') {
-            navigation.navigate('Alerte');
-          } else {
+          }
+          else if (rol === 'Medic' || rol === 'Asistenta') {
+            navigation.navigate('Alerte')
+          } 
+          else {
             Alert.alert('Rol necunoscut. Contactează administratorul.');
           }
 
@@ -81,16 +84,28 @@ const Login = ({ navigation }) => {
               autoCapitalize="none"
               required
             />
-            
-            <TextInput
-              style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
-              placeholder="Parolă"
-              placeholderTextColor={'#888'}
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry
-              required
-            />
+            <View style={{ flexDirection: 'row' ,position: 'relative' , alignItems: 'center'}}>
+                 <TextInput
+                    style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                    placeholder="Parolă"
+                    placeholderTextColor={'#888'}
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry={securizatParola}
+                    required
+                  />
+                  <TouchableOpacity
+                    onPress={() => setSecurizatParola(!securizatParola)}
+                    style={{position: 'absolute', right: -55, transform: [{translateY: 0 }],}} 
+                  >
+                    <Icon 
+                      name={securizatParola ? 'eye-off' : 'eye'} 
+                      size={24} 
+                      color="#888" 
+                    />
+                  </TouchableOpacity>
+            </View>
+         
             
             <View style={authStyles.linksContainer}>
               <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>

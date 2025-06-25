@@ -1,10 +1,10 @@
 
-import database from '@react-native-firebase/database';
+import database, { getDatabase , ref, push, set} from '@react-native-firebase/database';
 import { data } from 'react-router-dom';
 import auth from '@react-native-firebase/auth';
 import { AccessibilityInfo } from 'react-native';
 
-export const adaugareUser  = async (id, nume, prenume, adresaEmail, parola,rol) => {
+export const adaugareUser  = async (id, nume, prenume, adresaEmail,rol) => {
     try{
         await database()
             .ref('/users/' + id)
@@ -12,7 +12,6 @@ export const adaugareUser  = async (id, nume, prenume, adresaEmail, parola,rol) 
                 nume: nume,
                 adresaEmail: adresaEmail,
                 prenume: prenume,
-                parola: parola,
                 rol: rol
             });
             console.log('User adaugat cu succes:', id);
@@ -37,39 +36,6 @@ export const verificareExistaUser= async (adresaEmail) => {
     } 
 };
 
-export const verificareLogare = async(adresaEmail, parola) => {
-    try {
-        const date= await database()
-            .ref('/users')
-            .orderByChild('adresaEmail')
-            .equalTo(adresaEmail)
-            .once('value');
-        if (date.exists()) {                    
-            const userData = date.val();
-            const userId = Object.keys(userData)[0];
-            const user = userData[userId];
-            console.log(user.parola);
-            console.log(parola);
-            if (user.parola === parola) {
-                console.log('Logare reusita:', userId);
-                return { id: userId, ...user };
-            } 
-            else {
-                console.log('Parola incorecta');
-                return null;
-            }
-        }
-        else {
-            console.log('Nu exista user cu acest email');
-            return null;
-        }
-    }
-    catch (error){
-        console.error('Eroare la verificarea logarii:', error);
-        return null;    
-    }
-};
-
 export const recuperareParola =async (adresaEmail) => {
     try{
         const date= await database()
@@ -82,5 +48,70 @@ export const recuperareParola =async (adresaEmail) => {
     catch (error) {
         console.error('Eroare la recuperarea parolei:', error);
         return false;
+    }
+};
+
+export const verificareExistaPacient = async(cnp) => {
+    try{
+            const date = await database()
+            .ref('/pacienti')
+            .orderByChild('cnp')    
+            .equalTo(cnp)
+            .once('value');
+        return date.exists();
+    }
+    catch (error) {
+        console.error('Eroare la verificarea existentei pacientului:', error);
+        return false;
+    }
+
+};
+
+
+export const adaugarePacient = async (nume, prenume, email, anNastere, cnp, doctorId, nrTel,sex) => {
+    try {
+        const bazaDate = getDatabase();
+        const referintaPacient= ref(bazaDate, '/pacienti/');
+        const referintaNoua = push(referintaPacient);
+        const idPacient = referintaNoua.key; 
+        console.log('ID-ul pacientului:', idPacient);
+        await set(referintaNoua,{
+                nume: nume,
+                prenume: prenume,
+                email: email,
+                anNastere: anNastere,
+                cnp: cnp,
+                doctor: doctorId,
+                nrTel: nrTel,
+                sex: sex
+            });
+        return true;
+    }
+    catch (error) {
+        console.error('Eroare la adaugarea pacientului:', error);
+        return false;
+    }
+};
+
+export const extragereIdMedic = async (adresaEmail) => {
+    try {
+        const date = await database()
+            .ref('/users/')
+            .orderByChild('adresaEmail')
+            .equalTo(adresaEmail)
+            .once('value');
+        if( date.exists()){
+            const medici = date.val();
+            const idMedic = Object.keys(medici)[0]; 
+            return idMedic;
+        }
+        else {
+            console.log('Nu exista medic cu aceasta adresa de email.');
+            return null;
+        }
+    }
+    catch(error) {
+        console.error('Eroare la extragerea ID-ului medicului:', error);
+        return null;
     }
 };

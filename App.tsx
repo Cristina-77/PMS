@@ -5,11 +5,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './screens/Login';
 import CreateAccount from './screens/CreateAccount';
 import ForgotPassword from './screens/ForgotPassword'; 
-import Main from './screens/Main'; 
-
+import Main from './screens/Main';
+import Alerte from './screens/Alerte'; 
 
 type RootStackParamList = {
   Login: undefined;
+  Alerte: undefined;
   CreateAccount: undefined;
   ForgotPassword: undefined;
   Main: undefined;
@@ -57,6 +58,14 @@ const App = () => {
           options={{ 
             headerShown: false,
             title: 'Main'
+          }}
+          />
+         <Stack.Screen
+          name="Alerte" 
+          component={Alerte} 
+          options={{ 
+            headerShown: false,
+            title: 'Alerte'
           }}
           />
       </Stack.Navigator>

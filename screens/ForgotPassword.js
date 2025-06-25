@@ -9,9 +9,9 @@ const ForgotPassword = ({ navigation }) => {
 
   const handleSubmit = async () => {
     if (!email) {
-  Alert.alert("Te rugăm să introduci adresa de e-mail.");
-  return;
-}
+      Alert.alert("Te rugăm să introduci adresa de e-mail.");
+      return;
+    }
 auth()
   .sendPasswordResetEmail(email.trim())
   .then(() => {
