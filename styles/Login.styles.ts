@@ -33,19 +33,6 @@ const authStyles = StyleSheet.create({
     padding: 15,
   },
 
-  portraitInput: {
-    width: '200%',
-    height: 60,
-    marginVertical: 10,
-    fontSize: 18,
-    backgroundColor: 'white',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 15,
-    marginLeft: '50%',
-    
-  },
 
   landscapeButton: {
     width: '120%',
@@ -59,18 +46,6 @@ const authStyles = StyleSheet.create({
     marginTop: 10,
   },
 
-  portraitButton: {
-    width: '200%',
-    height: 60,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    marginTop: 10,
-    marginLeft: '50%',
-  },
   buttonText: {
     fontSize: 18,
     color: '#333',
@@ -98,13 +73,6 @@ const authStyles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  portraitTitle: {
-    marginTop: '50%',
-    textAlign: 'center',
-    color: '#333',
-    fontSize: 21,
-    fontWeight: 'bold',
-  },
 });
 
 export default authStyles;

@@ -70,8 +70,7 @@ const CreateAccount = ({ navigation }) => {
 
 
 
-  const { width, height } = useWindowDimensions();
-    const isPortrait = height >= width;
+  
 
   return (
     <ImageBackground 
@@ -89,9 +88,9 @@ const CreateAccount = ({ navigation }) => {
         keyboardShouldPersistTaps="handled"
       >
         <View style={authStyles.formContainer}>
-          <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Creează Un Cont</Text>
+          <Text style={authStyles.landscapeTitle}>Creează Un Cont</Text>
             <TextInput
-              style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+              style={authStyles.landscapeInput}
               placeholder="Nume"
               placeholderTextColor={'#888'}
               value={lastName}
@@ -100,7 +99,7 @@ const CreateAccount = ({ navigation }) => {
             />
             
             <TextInput
-              style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+              style={authStyles.landscapeInput}
               placeholder="Prenume"
               placeholderTextColor={'#888'}
               value={firstName}
@@ -109,7 +108,7 @@ const CreateAccount = ({ navigation }) => {
             />
             
             <TextInput
-              style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+              style={authStyles.landscapeInput}
               placeholder="Email"
               placeholderTextColor={'#888'}
               value={email}
@@ -120,7 +119,7 @@ const CreateAccount = ({ navigation }) => {
             />
             <View style={{flexDirection: 'row', alignItems: 'center', position: 'relative'}}>
               <TextInput
-              style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+              style={authStyles.landscapeInput}
               placeholder="Parolă"
               placeholderTextColor={'#888'}
               value={password}
@@ -142,7 +141,7 @@ const CreateAccount = ({ navigation }) => {
             </View>
             <View style={{flexDirection: 'row', alignItems: 'center', position: 'relative'}}>
                 <TextInput
-                  style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                  style={authStyles.landscapeInput}
                   placeholder="Repetare Parolă"
                   placeholderTextColor={'#888'}
                   value={confirmPassword}
@@ -172,7 +171,7 @@ const CreateAccount = ({ navigation }) => {
                 <Picker.Item label="Receptie" value="Receptie" />
             </Picker>
 
-            <TouchableOpacity style={isPortrait ? authStyles.portraitButton : authStyles.landscapeButton} onPress={handleRegister}>
+            <TouchableOpacity style={authStyles.landscapeButton} onPress={handleRegister}>
               <Text style={authStyles.buttonText}>Creare cont</Text>
             </TouchableOpacity>
         </View>

@@ -30,8 +30,7 @@ auth()
     console.log('Password reset requested for:', email);
   };
 
-  const { width, height } = useWindowDimensions();
-  const isPortrait = height >= width;
+  
 
   return (
     <ImageBackground 
@@ -48,16 +47,16 @@ auth()
       keyboardShouldPersistTaps="handled"
     >
       <View style={authStyles.formContainer}>
-        <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Resetare Parolă</Text>
+        <Text style={authStyles.landscapeTitle}>Resetare Parolă</Text>
         <TextInput
-          style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+          style={authStyles.landscapeInput}
           placeholder="E-mail"
           placeholderTextColor={'#888'}
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
         />
-        <TouchableOpacity style={isPortrait ? authStyles.portraitButton : authStyles.landscapeButton} onPress={handleSubmit}>
+        <TouchableOpacity style={authStyles.landscapeButton} onPress={handleSubmit}>
           <Text style={authStyles.buttonText}>Trimite link de resetare</Text>
         </TouchableOpacity>
       </View>

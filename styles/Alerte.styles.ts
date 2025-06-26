@@ -21,13 +21,7 @@ const authStyles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
   },
-  portraitTitle: {
-    marginTop: '50%',
-    textAlign: 'center',
-    color: '#333',
-    fontSize: 21,
-    fontWeight: 'bold',
-  },
+  
   formContainer: {
    width: '100%',
     maxWidth: 400,

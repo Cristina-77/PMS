@@ -111,9 +111,9 @@ const Main = ({ navigation }) => {
       >
         <View style={authStyles.formContainer}>
           
-            <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Introducere Pacienți</Text>
+            <Text style={authStyles.landscapeTitle}>Introducere Pacienți</Text>
               <TextInput
-                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                style={authStyles.landscapeInput}
                 placeholder="Nume"
                 placeholderTextColor={'#888'}
                 value={lastName}
@@ -122,7 +122,7 @@ const Main = ({ navigation }) => {
               />
               
               <TextInput
-                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                style={authStyles.landscapeInput}
                 placeholder="Prenume"
                 placeholderTextColor={'#888'}
                 value={firstName}
@@ -131,7 +131,7 @@ const Main = ({ navigation }) => {
               />
               
               <TextInput
-                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                style={authStyles.landscapeInput}
                 placeholder="Email"
                 placeholderTextColor={'#888'}
                 value={email}
@@ -142,7 +142,7 @@ const Main = ({ navigation }) => {
               />
               
               <TextInput
-                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                style={authStyles.landscapeInput}
                 placeholder="An naștere"
                 placeholderTextColor={'#888'}
                 value={anNastere}
@@ -151,7 +151,7 @@ const Main = ({ navigation }) => {
               />
               
               <TextInput
-                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                style={authStyles.landscapeInput}
                 placeholder="Email doctor"
                 placeholderTextColor={'#888'}
                 value={doctor}
@@ -161,7 +161,7 @@ const Main = ({ navigation }) => {
               
               <View style={{flexDirection: 'row',alignItems: 'center' , position: 'relative'}}>
                     <TextInput
-                      style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                      style={authStyles.landscapeInput}
                       placeholder="CNP"
                       placeholderTextColor={'#888'}
                       value={cnp}
@@ -182,7 +182,7 @@ const Main = ({ navigation }) => {
               </View>
 
               <TextInput
-                style={isPortrait ? authStyles.portraitInput : authStyles.landscapeInput}
+                style={authStyles.landscapeInput}
                 placeholder="Numar de telefon"
                 placeholderTextColor={'#888'}
                 value={nrtel}
@@ -200,7 +200,7 @@ const Main = ({ navigation }) => {
               </Picker>
 
             
-            <TouchableOpacity style={isPortrait ? authStyles.portraitButton : authStyles.landscapeButton} onPress={handleRegister}>
+            <TouchableOpacity style={authStyles.landscapeButton} onPress={handleRegister}>
               <Text style={authStyles.buttonText}>Introducere Pacient</Text>
             </TouchableOpacity>
 

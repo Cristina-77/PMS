@@ -31,18 +31,6 @@ const authStyles = StyleSheet.create({
     borderColor: '#ccc',
     padding: 15,
   },
-portraitInput: {
-    width: '50%',
-    height: 60,
-    marginVertical: 10,
-    fontSize: 18,
-    backgroundColor: 'white',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 15,
-    marginLeft: '25%',
-  },
 
   landscapeButton: {
     width: '120%',
@@ -55,18 +43,6 @@ portraitInput: {
     borderColor: '#ccc',
     marginTop: 10,
     
-  },
-   portraitButton: {
-    width: '50%',
-    height: 60,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    marginTop: 10,
-    marginLeft: '25%',
   },
   buttonText: {
     fontSize: 18,
@@ -82,13 +58,6 @@ portraitInput: {
     fontWeight: 'bold',
   },
 
-  portraitTitle: {
-    marginTop: '50%',
-    textAlign: 'center',
-    color: '#333',
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
 });
 
 export default authStyles;

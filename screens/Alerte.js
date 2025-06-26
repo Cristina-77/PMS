@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { View, Text, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions, Keyboard, TouchableWithoutFeedback,ScrollView,SafeAreaView  } from 'react-native';
 import authStyles from '../styles/Alerte.styles';
 const Alerte = ({ navigation }) => {
-  const { width, height } = useWindowDimensions();
-      const isPortrait = height >= width;
-  
   return (
     <ImageBackground 
       source={require('../icons/login.jpg')} 
@@ -22,7 +19,7 @@ const Alerte = ({ navigation }) => {
         keyboardShouldPersistTaps="handled"
       >
         <View style={authStyles.formContainer}>
-            <Text style={isPortrait ? authStyles.portraitTitle : authStyles.landscapeTitle}>Alerte Pacienți</Text>
+            <Text style={authStyles.landscapeTitle}>Alerte Pacienți</Text>
         </View>
       </ScrollView>
        </SafeAreaView>
