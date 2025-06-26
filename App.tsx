@@ -52,20 +52,25 @@ const App = () => {
             headerTintColor: '#333'
           }} 
         />
+  
         <Stack.Screen
           name="Main" 
           component={Main}
           options={{ 
-            headerShown: false,
-            title: 'Main'
+            headerShown: true,
+            title: 'Adaugare Pacienti',
+            headerTitleStyle: styles.headerTitle,
+            headerTintColor: '#333'
           }}
           />
          <Stack.Screen
           name="Alerte" 
           component={Alerte} 
           options={{ 
-            headerShown: false,
-            title: 'Alerte'
+            headerShown: true,
+            title: 'Alerte',
+            headerTitleStyle: styles.headerTitle,
+            headerTintColor: '#333'
           }}
           />
       </Stack.Navigator>

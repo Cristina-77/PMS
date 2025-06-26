@@ -47,6 +47,8 @@ const CreateAccount = ({ navigation }) => {
         const credentiale= await auth().createUserWithEmailAndPassword(email, password);            
         const user = credentiale.user;
         const uid = user.uid;
+        await user.sendEmailVerification();
+        Alert.alert("Verifică-ți e-mailul pentru a activa contul.");
         await adaugareUser(uid, lastName, firstName, email, selectedValue);
         Alert.alert("Cont creat cu succes!");
         navigation.navigate('Login');

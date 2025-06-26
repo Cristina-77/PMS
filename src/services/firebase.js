@@ -71,11 +71,9 @@ export const verificareExistaPacient = async(cnp) => {
 export const adaugarePacient = async (nume, prenume, email, anNastere, cnp, doctorId, nrTel,sex) => {
     try {
         const bazaDate = getDatabase();
-        const referintaPacient= ref(bazaDate, '/pacienti/');
-        const referintaNoua = push(referintaPacient);
-        const idPacient = referintaNoua.key; 
-        console.log('ID-ul pacientului:', idPacient);
-        await set(referintaNoua,{
+        const referintaPacient = ref(bazaDate, `/pacienti/${cnp}`);
+
+        await set(referintaPacient,{
                 nume: nume,
                 prenume: prenume,
                 email: email,

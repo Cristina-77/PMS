@@ -57,3 +57,8 @@ Thumbs.db
 *.log
 *.tmp
 tmp/
+
+.env
+package-lock.json
+package.json
+android\app\google-services.json
