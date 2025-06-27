@@ -12,22 +12,28 @@ const authStyles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+    padding: 30,
+    
   },
   landscapeTitle: {
-    marginTop: '-17%',
     textAlign: 'center',
     color: '#333',
-    fontSize: 30,
+    fontSize: 40,
     fontWeight: 'bold',
   },
   
   formContainer: {
    width: '100%',
-    maxWidth: 400,
+    maxWidth: 1000,
     padding: 20,
     borderRadius: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
   },
+  text: {
+    color: '#333',
+    fontSize: 24,
+  },
+
 });
 
 export default authStyles;

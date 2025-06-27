@@ -4,7 +4,7 @@ const PRIVATE_KEY="0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f
 
 import PacientiABI from './blockchain/artifacts/contracts/Pacienti.sol/Pacienti.json';
 
-const provider = new JsonRpcProvider("http://192.168.1.8:8545");
+const provider = new JsonRpcProvider("http://10.233.75.233:8545");
 const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
 
 export interface Pacient {

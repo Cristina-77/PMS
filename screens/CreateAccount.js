@@ -167,7 +167,6 @@ const CreateAccount = ({ navigation }) => {
             >
                 <Picker.Item label="Selectează rolul" value="" />
                 <Picker.Item label="Medic" value="Medic" />
-                <Picker.Item label="Asistenta" value="Asistenta" />
                 <Picker.Item label="Receptie" value="Receptie" />
             </Picker>
 

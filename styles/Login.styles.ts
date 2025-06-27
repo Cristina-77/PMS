@@ -66,7 +66,7 @@ const authStyles = StyleSheet.create({
   },
 
   landscapeTitle: {
-    marginTop: '-17%',
+    
     textAlign: 'center',
     color: '#333',
     fontSize: 30,

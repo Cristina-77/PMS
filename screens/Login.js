@@ -1,15 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { View, Text, TextInput, TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, useWindowDimensions, Keyboard, TouchableWithoutFeedback, ScrollView, Alert } from 'react-native';
 import authStyles from '../styles/Login.styles';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [securizatParola, setSecurizatParola] = useState(true);
+  const getPatientsForDoctor = async (doctorID) => {
+  try {
+    const patientsSnapshot = await database()
+      .ref('/pacienti') 
+      .once('value');  
 
+    const patientsList = [];
+    patientsSnapshot.forEach((childSnapshot) => {
+      const patient = childSnapshot.val();
+      if (patient.doctor === doctorID) { 
+        patientsList.push(patient);
+      }
+    });
+
+    return patientsList; 
+  } catch (error) {
+    console.error('Eroare la obținerea pacienților:', error);
+    return []; 
+  }
+};
   const handleLogin = async () => {
     if (!email || !password) {
       Alert.alert("Toate câmpurile trebuie completate");
@@ -19,17 +39,19 @@ const Login = ({ navigation }) => {
     try {
       const credential = await auth().signInWithEmailAndPassword(email, password);
       const user = credential.user;
-
-      
-
       const snapshot = await database().ref(`/users/${user.uid}/rol`).once('value');
       const rol = snapshot.val();
 
       if (rol === 'Receptie') navigation.navigate('Main');
-      else if (rol === 'Medic' || rol === 'Asistenta') navigation.navigate('Alerte');
+      else if (rol === 'Medic') {
+         const patients = await getPatientsForDoctor(user.uid);
+         console.log(patients);
+         navigation.navigate('Alerte', { patients });
+}
+        
       else Alert.alert('Rol necunoscut', 'Contactează administratorul.');
     } catch (error) {
-      Alert.alert("Eraore la autentificare", "Email sau parolă incorectă");
+      Alert.alert("Eroare la autentificare", "Email sau parolă incorectă");
     }
   };
 
