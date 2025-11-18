@@ -20,7 +20,7 @@ Proiectul a fost realizat de studenții din anul 2 : **Corb Alexia-Gabriela** , 
 + Swarteatch - colectarea datelor vitale
 
 ### 📲 Testarea hardware 
-+ Tabletă: Lenovo Tab B11 (Android 13)
++ Tabletă: Lenovo Tab M11 (Android 13)
 + Smartwatch (cu senzori integrați de puls)
 
 ### 🚀 Rularea aplicației local 
